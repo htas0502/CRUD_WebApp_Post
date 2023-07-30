@@ -1,8 +1,11 @@
 
 // Khai bao express de co the xai duoc express
 const express = require('express')
-
+// Khai bao database 
 const connectDB = require('./config/db')
+
+// ** Import Routes
+const posts = require('./routes/posts')
 
 // Khoi dong app
 const app = express()
@@ -12,6 +15,9 @@ app.use(express.json())
 
 // * Ket noi CSDL
 connectDB()
+
+// ** Su dung Routes
+app.use('/posts', posts)        // Moi duong dan ma huong toi '/post' nay thi no se chuyen ve file posts.js
 
 // Tao 1 cong (port)
 const PORT = 5000;
